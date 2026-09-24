@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Kodix Security Scan
+      - name: Run Kodix Security Scan Nice
         uses: kodix-security/kodix-action@v1
         with:
           api_key: ${{ secrets.KODIX_API_KEY }}
