@@ -1,4 +1,4 @@
-name: Kodix Security Scan
+name: Kodix Security + Compliance Scan
 
 on:
   push:
@@ -9,14 +9,19 @@ on:
 
 jobs:
   security-scan:
-    name: 🛡️ Kodix AI Security Scan
+    name: 🛡️ Kodix AI Security + Compliance Scan
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Kodix Security Scan
+      # Requires a compliance document on your Kodix account first: Profile → Compliance → upload
+      # CODING_STANDARDS.md (or click "Try a sample document"). Without one, this step fails with
+      # "no_compliance_documents" — see README.md → "Testing the Compliance Check".
+      - name: Run Kodix Security + Compliance Scan
         uses: kodix-security/kodix-action@v1
         with:
           api_key: ${{ secrets.KODIX_API_KEY }}
+          code_scan: true
+          compliance_scan: true
